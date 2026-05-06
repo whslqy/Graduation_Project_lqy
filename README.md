@@ -356,20 +356,3 @@ The full report workflow usually creates:
 This repository is structured so that the notebook remains relatively clean and the reusable logic stays inside Python modules.
 
 For GitHub presentation, this is usually better than placing all training logic directly into notebook cells.
-
-## Should the Notebook Contain More Guidance?
-
-My recommendation is:
-- keep detailed usage documentation in this README,
-- keep the notebook guidance lighter and more task-oriented.
-
-The notebook already has section-level explanations, which is good.
-
-If you want to improve it slightly further, the best additions would be short notes such as:
-- which fields in the current cell are meant to be edited,
-- which output folder the cell writes to,
-- whether the cell is quick or time-consuming.
-
-That kind of extra guidance is helpful.
-
-However, the full detailed explanation of configurable options belongs in this README rather than being repeated throughout the notebook.
