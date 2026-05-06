@@ -72,6 +72,35 @@ Related paths derived from `DATA_ROOT`:
 - `EXTENDED_DIR`
 - `EMOTION_DIR`
 
+## CK+ Dataset Access
+
+This repository does not redistribute the CK+ dataset. You must obtain access separately and place the files in the local directory structure expected by the code.
+
+Useful official or source-related references:
+- CK database project page at Carnegie Mellon Robotics Institute: https://www.ri.cmu.edu/project/cohn-kanade-au-coded-facial-expression-database/
+- CMU face database page: https://www.cs.cmu.edu/~face/database.htm
+- CK / CK+ agreement form: https://www.jeffcohn.net/wp-content/uploads/2020/04/CK-AgreementForm.pdf
+- CK+ paper PDF: https://www.jeffcohn.net/wp-content/uploads/2020/02/CVPR2010_CK2.pdf.pdf
+
+Important note:
+- The Jeffrey Cohn resources page stated that distribution of Cohn-Kanade and Extended Cohn-Kanade ended on May 1, 2025.
+- In practical terms, this means the official source is no longer providing normal public dataset download in the way older CK / CK+ reproductions often assumed.
+- Reproduction therefore depends on already having an authorised local copy, obtaining access through prior institutional arrangements, or confirming an alternative access route directly with the dataset owners.
+
+Practical expectation for this project:
+- the image data should be placed under `CK+/data`
+- [kd_config.py](/E:/Dataset/kd_config.py) should then be updated if your local dataset root differs from the current path
+
+The code currently expects the following structure under `DATA_ROOT`:
+
+```text
+CK+/data/
+├── extended-cohn-kanade-images/
+│   └── cohn-kanade-images/
+└── Emotion_labels/
+    └── Emotion/
+```
+
 ## Recommended Way to Run the Project
 
 The recommended workflow is to open [main.ipynb](/E:/Dataset/main.ipynb) and run only the section you need.
