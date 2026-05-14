@@ -1,10 +1,10 @@
-# CK+ Facial Expression Recognition with Knowledge Distillation
+﻿# CK+ Facial Expression Recognition with Knowledge Distillation
 
 This repository contains the core code for a graduation project on lightweight facial expression recognition using knowledge distillation.
 
 The project uses the CK+ dataset, trains baseline student models, trains teacher models, runs multiple teacher-student distillation variants, and exports experiment results for later comparison and analysis.
 
-The recommended entry point is [main.ipynb](/E:/Dataset/main.ipynb). Most reusable logic is implemented in the Python modules rather than inside the notebook.
+The recommended entry point is [main.ipynb](main.ipynb). Most reusable logic is implemented in the Python modules rather than inside the notebook.
 
 ## Project Purpose
 
@@ -20,18 +20,18 @@ The project focuses on:
 ## Main Files
 
 Core project files:
-- [main.ipynb](/E:/Dataset/main.ipynb): recommended interactive entry point.
-- [kd_config.py](/E:/Dataset/kd_config.py): central configuration file for data paths, training settings, augmentation, model lists, and distillation defaults.
-- [kd_data.py](/E:/Dataset/kd_data.py): CK+ sample loading, preprocessing, augmentation, and dataloader construction.
-- [kd_models.py](/E:/Dataset/kd_models.py): model construction and feature-extraction helpers.
-- [trainer.py](/E:/Dataset/trainer.py): baseline classifier training and evaluation.
-- [distill.py](/E:/Dataset/distill.py): distillation loss, wrapper, adapter, and student distillation training.
-- [pipeline.py](/E:/Dataset/pipeline.py): high-level training and evaluation workflow helpers.
-- [variant_experiments.py](/E:/Dataset/variant_experiments.py): full report generation, variant comparison, and sweep utilities.
-- [visualize.py](/E:/Dataset/visualize.py): plotting and comparison helpers used by the workflow.
+- [main.ipynb](main.ipynb): recommended interactive entry point.
+- [kd_config.py](kd_config.py): central configuration file for data paths, training settings, augmentation, model lists, and distillation defaults.
+- [kd_data.py](kd_data.py): CK+ sample loading, preprocessing, augmentation, and dataloader construction.
+- [kd_models.py](kd_models.py): model construction and feature-extraction helpers.
+- [trainer.py](trainer.py): baseline classifier training and evaluation.
+- [distill.py](distill.py): distillation loss, wrapper, adapter, and student distillation training.
+- [pipeline.py](pipeline.py): high-level training and evaluation workflow helpers.
+- [variant_experiments.py](variant_experiments.py): full report generation, variant comparison, and sweep utilities.
+- [visualize.py](visualize.py): plotting and comparison helpers used by the workflow.
 
 Local-only helper scripts:
-- [local_only_scripts](/E:/Dataset/local_only_scripts): thesis/figure/export scripts that are not required for the main workflow.
+- [local_only_scripts](local_only_scripts): thesis/figure/export scripts that are not required for the main workflow.
 
 ## Files and Folders Usually Not Uploaded
 
@@ -60,10 +60,10 @@ If you run the notebook on a different machine, make sure these packages are ins
 
 ## Dataset Setup
 
-The CK+ data path is currently configured in [kd_config.py](/E:/Dataset/kd_config.py):
+The CK+ data path is currently configured in [kd_config.py](kd_config.py):
 
 ```python
-DATA_ROOT = Path("e:/Dataset/CK+/data")
+DATA_ROOT = PROJECT_ROOT / "CK+" / "data"
 ```
 
 If your dataset is stored elsewhere, this is the first place you should update.
@@ -89,21 +89,21 @@ Important note:
 
 Practical expectation for this project:
 - the image data should be placed under `CK+/data`
-- [kd_config.py](/E:/Dataset/kd_config.py) should then be updated if your local dataset root differs from the current path
+- [kd_config.py](kd_config.py) should then be updated if your local dataset root differs from the current path
 
 The code currently expects the following structure under `DATA_ROOT`:
 
 ```text
 CK+/data/
-├── extended-cohn-kanade-images/
-│   └── cohn-kanade-images/
-└── Emotion_labels/
-    └── Emotion/
+鈹溾攢鈹€ extended-cohn-kanade-images/
+鈹?  鈹斺攢鈹€ cohn-kanade-images/
+鈹斺攢鈹€ Emotion_labels/
+    鈹斺攢鈹€ Emotion/
 ```
 
 ## Recommended Way to Run the Project
 
-The recommended workflow is to open [main.ipynb](/E:/Dataset/main.ipynb) and run only the section you need.
+The recommended workflow is to open [main.ipynb](main.ipynb) and run only the section you need.
 
 Suggested order:
 1. Import modules.
@@ -208,7 +208,7 @@ What you can change directly:
 - `distill_mode`
 - output directories
 
-Supported `distill_mode` values are defined in [variant_experiments.py](/E:/Dataset/variant_experiments.py):
+Supported `distill_mode` values are defined in [variant_experiments.py](variant_experiments.py):
 - `logits_only`
 - `logits_cosine`
 - `logits_mse_regressor`
@@ -227,18 +227,18 @@ Typical editable fields:
 - `sweep_types`
 - `output_dir`
 
-Default sweep candidates are defined in `SWEEP_TYPE_LIBRARY` inside [variant_experiments.py](/E:/Dataset/variant_experiments.py).
+Default sweep candidates are defined in `SWEEP_TYPE_LIBRARY` inside [variant_experiments.py](variant_experiments.py).
 
 ## Where to Modify Things
 
 ### Change dataset path
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `DATA_ROOT`
 
 ### Change image size, crop size, batch size, epoch count, split ratio
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `IMG_SIZE`
 - `CROP_SIZE`
 - `BATCH_SIZE`
@@ -248,13 +248,13 @@ Edit [kd_config.py](/E:/Dataset/kd_config.py):
 
 ### Change class mapping
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `EMOTION_ID_TO_NAME`
 - `CLASS_NAMES`
 
 ### Change training hyperparameters
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `TRAINING_CONFIG`
 - `MODEL_TRAINING_CONFIG`
 - `DISTILLATION_CONFIG["student_training_config"]`
@@ -269,7 +269,7 @@ Important fields include:
 
 ### Change which teacher/student models are used
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `DISTILLATION_CONFIG["teacher_models"]`
 - `DISTILLATION_CONFIG["student_models"]`
 - `DISTILLATION_CONFIG["experiments"]`
@@ -282,7 +282,7 @@ Example experiment pair format:
 
 ### Change default distillation behaviour
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `temperature`
 - `alpha`
 - `feature_loss_weight`
@@ -295,7 +295,7 @@ Edit [kd_config.py](/E:/Dataset/kd_config.py):
 
 ### Change student-specific distillation settings
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `DISTILLATION_CONFIG["student_specific_config"]`
 
 This is the place to override settings such as:
@@ -309,13 +309,13 @@ This is the place to override settings such as:
 
 ### Change augmentation strategy
 
-Edit [kd_config.py](/E:/Dataset/kd_config.py):
+Edit [kd_config.py](kd_config.py):
 - `AUG_TYPES`
 - `AUG_DISPLAY_NAMES`
 
 ### Change distillation variants available for suite experiments
 
-Edit [variant_experiments.py](/E:/Dataset/variant_experiments.py):
+Edit [variant_experiments.py](variant_experiments.py):
 - `DISTILLATION_VARIANT_LIBRARY`
 
 This controls:
@@ -326,7 +326,7 @@ This controls:
 
 ### Change parameter sweep presets
 
-Edit [variant_experiments.py](/E:/Dataset/variant_experiments.py):
+Edit [variant_experiments.py](variant_experiments.py):
 - `SWEEP_TYPE_LIBRARY`
 
 This controls default values used in sweep experiments, for example:
@@ -356,3 +356,4 @@ The full report workflow usually creates:
 This repository is structured so that the notebook remains relatively clean and the reusable logic stays inside Python modules.
 
 For GitHub presentation, this is usually better than placing all training logic directly into notebook cells.
+

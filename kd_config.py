@@ -3,7 +3,8 @@ from pathlib import Path
 
 SEED = 42
 
-DATA_ROOT = Path("e:/Dataset/CK+/data")
+PROJECT_ROOT = Path(__file__).resolve().parent
+DATA_ROOT = PROJECT_ROOT / "CK+" / "data"
 EXTENDED_DIR = DATA_ROOT / "extended-cohn-kanade-images" / "cohn-kanade-images"
 EMOTION_DIR = DATA_ROOT / "Emotion_labels" / "Emotion"
 
